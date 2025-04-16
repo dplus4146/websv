@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savage Fit | Catálogo Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a2a6c;
+            --secondary: #0a0a2a;
+            --dark: #000000;
+            --accent: #00f2fe;
+            --accent2: #4facfe;
+            --text: #f8f9fa;
+            --text-secondary: #adb5bd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, var(--primary), var(--secondary), var(--dark));
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(79, 172, 254, 0.5), transparent);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.3));
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent2), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .brand-slogan {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            color: var(--text);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--text), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Products Grid */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .product-card {
+            background: rgba(10, 10, 42, 0.6);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(79, 172, 254, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(79, 172, 254, 0.3);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(to right, var(--accent2), var(--accent));
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .product-category {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: var(--accent);
+            background: rgba(79, 172, 254, 0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .product-price-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .product-old-price {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            margin-right: 0.5rem;
+        }
+
+        .product-rating {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(to right, var(--accent2), var(--accent));
+            color: var(--dark);
+            border: none;
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem 0;
+            margin-top: 5rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(79, 172, 254, 0.5), transparent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-link a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-link a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .brand-name {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <!-- Reemplaza "ruta/a/tu/logo.png" con la ruta de tu logo -->
+                <img src="logosv-Photoroom.png" alt="Savage Fit Logo" class="logo-img">
+                <div class="brand">
+                    <h1 class="brand-name">SAVAGE FIT</h1>
+                    <p class="brand-slogan">Flow & Style</p>
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#" class="nav-link">Inicio</a>
+                <a href="#" class="nav-link">Productos</a>
+                <a href="#" class="nav-link">Colecciones</a>
+                <a href="#" class="nav-link">Contacto</a>
+            </nav>
+            
+            <div class="social-icons">
+                <a href="https://www.instagram.com/savage_fitk/" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h2 class="hero-title">COLECCIÓN PREMIUM 2025</h2>
+            <p class="hero-subtitle">Descubre nuestra exclusiva selección de productos diseñados para elevar tu flow y piquete.</p>
+        </section>
+
+        <h3 class="section-title">Nuestros Productos</h3>
+
+        <div class="products-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-badge">Nuevo</div>
+                <div class="product-image-container">
+                    <!-- Reemplaza "ruta/a/imagen1.jpg" con la ruta de tu imagen -->
+                    <img src="img/Bape/bapeblue..jpg" alt="Producto 1" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title"> Bape blue</h3>
+                    <span class="product-category">hoodie</span>
+                    <p class="product-description">Camiseta técnica de alto rendimiento con tecnología de secado rápido y protección UV.</p>
+                    <div class="product-price-container">
+                        <div>
+                            <span class="product-old-price">$00.0</span>
+                            <span class="product-price">$0.0</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        Añadir al carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-badge">Oferta</div>
+                <div class="product-image-container">
+                    <!-- Reemplaza "ruta/a/imagen2.jpg" con la ruta de tu imagen -->
+                    <img src="img/Bape/bapepink2.jpg"Producto 2" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Bape pink</h3>
+                    <span class="product-category">hoodie</span>
+                    <p class="product-description">Shorts de compresión con soporte muscular y tejido transpirable para máximo confort.</p>
+                    <div class="product-price-container">
+                        <div>
+                            <span class="product-old-price">$00.0</span>
+                            <span class="product-price">$00.0</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        Añadir al carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <!-- Reemplaza "ruta/a/imagen3.jpg" con la ruta de tu imagen -->
+                    <img src="img/hellstar/hellstar.jpg" alt="Producto 3" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Hellstar black</h3>
+                    <span class="product-category">hoodie</span>
+                    <p class="product-description">Zapatillas de entrenamiento con amortiguación reactiva y suela antideslizante.</p>
+                    <div class="product-price-container">
+                        <div>
+                            <span class="product-price">$00.0</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        Añadir al carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <div class="product-badge">Más vendido</div>
+                <div class="product-image-container">
+                    <!-- Reemplaza "ruta/a/imagen4.jpg" con la ruta de tu imagen -->
+                    <img src="img/hellstar/hellstarpink.jpg" a="Producto 4" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Hellstar</h3>
+                    <span class="product-category">shirt</span>
+                    <p class="product-description">Set completo que incluye banda para sudor, guantes y cordones de repuesto.</p>
+                    <div class="product-price-container">
+                        <div>
+                            <span class="product-old-price">$00.0</span>
+                            <span class="product-price">$00.0</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        Añadir al carrito
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <!-- Reemplaza "ruta/a/imagen5.jpg" con la ruta de tu imagen -->
+                    <img src="img/redandblack/grisblack.jpg" alt="Producto 5" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">hoodie black</h3>
+                    <span class="product-category">hoodie</span>
+                    <p class="product-description">Mochila resistente con múltiples compartimentos y bolsillo para hidratación.</p>
+                    <div class="product-price-container">
+                        <div>
+                            <span class="product-price">$00.0<span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        Añadir al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Savage Fit</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Performance & Style para atletas que buscan superar sus límites.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/savage_fitk/" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Productos</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Novedades</a></li>
+                    <li class="footer-link"><a href="#">Ropa Deportiva</a></li>
+                    <li class="footer-link"><a href="#">Calzado</a></li>
+                    <li class="footer-link"><a href="#">Accesorios</a></li>
+                    <li class="footer-link"><a href="#">Ofertas</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Empresa</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Sobre Nosotros</a></li>
+                    <li class="footer-link"><a href="#">Blog</a></li>
+                    <li class="footer-link"><a href="#">Trabaja con Nosotros</a></li>
+                    <li class="footer-link"><a href="#">Términos y Condiciones</a></li>
+                    <li class="footer-link"><a href="#">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#"><i class="fas fa-envelope"></i> info@savagefit.com</a></li>
+                    <li class="footer-link"><a href="#"><i class="fas fa-phone"></i> +1 234 567 890</a></li>
+                    <li class="footer-link"><a href="#"><i class="fas fa-map-marker-alt"></i> Dirección 123, Ciudad</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Savage Fit. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript mejorado para funcionalidad del carrito
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animación de carga suave
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+
+            // Carrito de compras
+            let cart = [];
+            const cartCount = document.createElement('span');
+            cartCount.className = 'cart-count';
+            cartCount.textContent = '0';
+            
+            const cartIcon = document.createElement('a');
+            cartIcon.href = '#';
+            cartIcon.className = 'social-icon';
+            cartIcon.innerHTML = '<i class="fas fa-shopping-cart"></i>';
+            cartIcon.appendChild(cartCount);
+            
+            const socialIcons = document.querySelector('.social-icons');
+            socialIcons.insertBefore(cartIcon, socialIcons.firstChild);
+            
+            // Actualizar contador del carrito
+            function updateCartCount() {
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                cartCount.textContent = totalItems;
+                
+                // Animación
+                if (totalItems > 0) {
+                    cartCount.style.display = 'inline-block';
+                    cartCount.style.minWidth = '18px';
+                    cartCount.style.height = '18px';
+                    cartCount.style.backgroundColor = '#ff4757';
+                    cartCount.style.color = 'white';
+                    cartCount.style.borderRadius = '50%';
+                    cartCount.style.fontSize = '12px';
+                    cartCount.style.textAlign = 'center';
+                    cartCount.style.lineHeight = '18px';
+                    cartCount.style.position = 'absolute';
+                    cartCount.style.top = '-5px';
+                    cartCount.style.right = '-5px';
+                    
+                    // Efecto de rebote
+                    cartCount.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        cartCount.style.transform = 'scale(1)';
+                    }, 300);
+                } else {
+                    cartCount.style.display = 'none';
+                }
+            }
+            
+            // Añadir al carrito
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productId = productCard.getAttribute('data-id') || Math.random().toString(36).substr(2, 9);
+                    const productName = productCard.querySelector('.product-title').textContent;
+                    const productPrice = parseFloat(productCard.querySelector('.product-price').textContent.replace('$', ''));
+                    const productImage = productCard.querySelector('.product-image').src;
+                    
+                    // Verificar si el producto ya está en el carrito
+                    const existingItem = cart.find(item => item.id === productId);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id: productId,
+                            name: productName,
+                            price: productPrice,
+                            image: productImage,
+                            quantity: 1
+                        });
+                    }
+                    
+                    // Actualizar UI
+                    updateCartCount();
+                    
+                    // Efecto visual
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i> Añadido';
+                    this.style.background = 'linear-gradient(to right, #4CAF50, #2E7D32)';
+                    
+                    // Crear efecto de flotación
+                    const floatText = document.createElement('div');
+                    floatText.textContent = '+1';
+                    floatText.style.position = 'absolute';
+                    floatText.style.color = '#4CAF50';
+                    floatText.style.fontWeight = 'bold';
+                    floatText.style.animation = 'floatUp 1s ease-out forwards';
+                    
+                    // Añadir animación al CSS
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes floatUp {
+                            0% { opacity: 1; transform: translateY(0); }
+                            100% { opacity: 0; transform: translateY(-30px); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    this.appendChild(floatText);
+                    
+                    // Restaurar botón después de 2 segundos
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.background = 'linear-gradient(to right, var(--accent2), var(--accent))';
+                        floatText.remove();
+                    }, 2000);
+                    
+                    // Mostrar notificación
+                    showNotification(`${productName} añadido al carrito`);
+                });
+            });
+            
+            // Mostrar notificación
+            function showNotification(message) {
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.textContent = message;
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.right = '20px';
+                notification.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                notification.style.color = 'white';
+                notification.style.padding = '15px 25px';
+                notification.style.borderRadius = '5px';
+                notification.style.zIndex = '1000';
+                notification.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+                notification.style.transform = 'translateX(200%)';
+                notification.style.transition = 'transform 0.3s ease';
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(0)';
+                }, 10);
+                
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(200%)';
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }, 3000);
+            }
+            
+            // Menú responsive
+            const menuToggle = document.createElement('div');
+            menuToggle.className = 'menu-toggle';
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            menuToggle.style.display = 'none';
+            menuToggle.style.fontSize = '1.5rem';
+            menuToggle.style.cursor = 'pointer';
+            
+            const header = document.querySelector('header');
+            header.insertBefore(menuToggle, header.firstChild);
+            
+            function toggleMenu() {
+                const navLinks = document.querySelector('.nav-links');
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            }
+            
+            menuToggle.addEventListener('click', toggleMenu);
+            
+            function handleResize() {
+                const navLinks = document.querySelector('.nav-links');
+                if (window.innerWidth <= 768) {
+                    menuToggle.style.display = 'block';
+                    navLinks.style.display = 'none';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100px';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.backgroundColor = 'rgba(10, 10, 42, 0.95)';
+                    navLinks.style.padding = '1rem';
+                    navLinks.style.gap = '1rem';
+                    navLinks.style.zIndex = '100';
+                } else {
+                    menuToggle.style.display = 'none';
+                    navLinks.style.display = 'flex';
+                    navLinks.style.position = 'static';
+                    navLinks.style.backgroundColor = 'transparent';
+                    navLinks.style.padding = '0';
+                    navLinks.style.flexDirection = 'row';
+                }
+            }
+            
+            window.addEventListener('resize', handleResize);
+            handleResize();
+        });
+    </script>
+</body>
+</html>
